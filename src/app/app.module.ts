@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
 import { StartsComponent } from './starts/starts.component';
+import { StarsComponent } from './stars/stars.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { StartsComponent } from './starts/starts.component';
     SearchComponent,
     CarouselComponent,
     ProductComponent,
-    StartsComponent
+    StartsComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule
