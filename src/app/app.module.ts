@@ -8,7 +8,6 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
-import { StartsComponent } from './starts/starts.component';
 import { StarsComponent } from './stars/stars.component';
 
 
@@ -20,7 +19,6 @@ import { StarsComponent } from './stars/stars.component';
     SearchComponent,
     CarouselComponent,
     ProductComponent,
-    StartsComponent,
     StarsComponent
   ],
   imports: [
