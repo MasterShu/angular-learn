@@ -3,7 +3,7 @@
     <img src="http://via.placeholder.com/320x150" alt="">
     <div class="caption">
       <h4 class="pull-right">{{item.price}}伤害</h4>
-      <h4><a>{{item.title}}</a></h4>
+      <h4><a [routerLink]="['/product', item.title]">{{item.title}}</a></h4>
       <p>{{item.desc}}</p>
     </div>
     <div>
