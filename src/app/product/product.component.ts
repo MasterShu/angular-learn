@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../modules/product';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product',
@@ -10,19 +11,10 @@ export class ProductComponent implements OnInit {
 
   private products: Array<Product>;
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = [
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天']),
-       new Product(1, '狄一师', 1.99, 3.5, '这是狄一师, 是我创立的最强一式.', ['地', '天'])
-    ];
+    this.products = this.productService.getProducts();
   }
 
 }
