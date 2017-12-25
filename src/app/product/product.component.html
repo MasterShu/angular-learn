@@ -1,6 +1,13 @@
-<div *ngFor="let item of products" class="col-md-4 col-sm-4 col-lg-4">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <input class="form-control" [formControl]="titleFilter" placeholder="请输入招式名">
+    </div>
+  </div>
+</div>
+<div *ngFor="let item of products | filter:'title':keyword" class="col-md-4 col-sm-4 col-lg-4">
   <div class="thumbnail">
-    <img src="http://via.placeholder.com/320x150" alt="">
+    <img [src]="imgUrl" alt="">
     <div class="caption">
       <h4 class="pull-right">{{item.price}}伤害</h4>
       <h4><a [routerLink]="['/product', item.id]">{{item.title}}</a></h4>
