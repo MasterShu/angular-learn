@@ -14,7 +14,6 @@ export class FilterPipe implements PipeTransform {
       fieldValue = item[filterField];
       return fieldValue.indexOf(keyword) >= 0;
     });
-    return null;
   }
 
 }
