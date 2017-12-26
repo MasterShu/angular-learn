@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product, Comment } from '../../modules/product';
+import { Product, Comment } from '../../models/product';
 
 @Injectable()
 export class ProductService {
@@ -24,6 +24,10 @@ export class ProductService {
     new Comment(4, 1, '2017-10-31 10:21:22', 'alen', 5, '攻击力很高'),
     new Comment(5, 3, '2017-10-31 10:21:22', 'alen', 1, '攻击力很低, 不好'),
   ];
+
+  getAllCategories(): string[] {
+    return ['天', '地', '人'];
+  }
 
   getProducts() {
     return this.products;

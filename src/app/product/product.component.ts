@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../modules/product';
+import { Product } from '../../models/product';
 import { ProductService } from '../shared/product.service';
 import { FormControl } from '@angular/forms';
 // tslint:disable-next-line:import-blacklist
