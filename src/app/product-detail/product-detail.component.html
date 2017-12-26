@@ -1,14 +1,14 @@
 <div class="thumbnail">
   <img src="http://via.placeholder.com/840x220" alt="">
   <div>
-    <h4 class="pull-right">{{product.price}}伤害</h4>
-    <h4>{{product.title}}</h4>
-    <h4>{{product.desc}}</h4>
+    <h4 class="pull-right">{{product?.price}}伤害</h4>
+    <h4>{{product?.title}}</h4>
+    <h4>{{product?.desc}}</h4>
   </div>
   <div>
-    <p class="pull-right">{{comments.length}}</p>
+    <p class="pull-right">{{comments?.length}}</p>
     <p>
-      <app-stars [rating]="product.rating"></app-stars>
+      <app-stars [rating]="product?.rating"></app-stars>
     </p>
   </div>
 </div>

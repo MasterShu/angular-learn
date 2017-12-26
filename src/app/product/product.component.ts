@@ -4,6 +4,7 @@ import { ProductService } from '../shared/product.service';
 import { FormControl } from '@angular/forms';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product',
@@ -12,21 +13,19 @@ import 'rxjs/Rx';
 })
 export class ProductComponent implements OnInit {
 
-  private products: Array<Product>;
+  private products: Observable<Product[]>;
   private keyword: string;
   private titleFilter: FormControl = new FormControl();
   private imgUrl = 'http://via.placeholder.com/320x150';
 
   constructor(private productService: ProductService) {
-    this.titleFilter.valueChanges
-      .debounceTime(500)
-      .subscribe(
-        value => this.keyword = value
-      );
   }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
+    this.productService.searchEvent.subscribe(
+      params => this.products = this.productService.search(params)
+    );
   }
 
 }
