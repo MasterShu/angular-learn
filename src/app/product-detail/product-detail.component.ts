@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, Comment } from '../../models/product';
 import { ProductService } from '../shared/product.service';
+import { WebsocketService } from '../shared/websocket.service';
+// tslint:disable-next-line:import-blacklist
+import 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,7 +22,13 @@ export class ProductDetailComponent implements OnInit {
   isWatched = false;
   currentBid: number;
 
-  constructor(private routeInfo: ActivatedRoute, private productService: ProductService) { }
+  subscription: Subscription;
+
+  constructor(
+    private routeInfo: ActivatedRoute,
+    private productService: ProductService,
+    private wsService: WebsocketService
+  ) { }
 
   ngOnInit() {
     let productId: number;
@@ -32,7 +42,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getCommentsForProductId(productId).subscribe(
       comments => this.comments = comments
     );
-    console.log(this.comments);
   }
 
   addComment() {
@@ -50,6 +59,21 @@ export class ProductDetailComponent implements OnInit {
   }
 
   watchProduct() {
-    this.isWatched = !this.isWatched;
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.isWatched = false;
+      this.subscription = null;
+    } else {
+      this.isWatched = true;
+      this.subscription = this.wsService.createObservableSocket('ws://localhost:8069', this.product.id)
+        .subscribe(
+          products => {
+            console.log(products);
+            let product;
+            product = products.find(p => p.productId === this.product.id);
+            this.currentBid = product.bid;
+          }
+        );
+    }
   }
 }

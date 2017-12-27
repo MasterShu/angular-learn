@@ -17,7 +17,7 @@
   <button class="btn btn-default btn-large" [class.active]="isWatched" (click)="watchProduct()" >
     {{ isWatched? '取消关注': '关注'}}
   </button>
-  <label for="">最新伤害值 {{ currentBid }}</label>
+  <label for="">最新伤害值 {{ currentBid | number:'.2-2'}}</label>
 </div>
 
 <div class="well">
